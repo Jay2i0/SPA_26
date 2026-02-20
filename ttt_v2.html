@@ -20,10 +20,19 @@
             font-weight: bolder;
             color: #0000ff;
             margin-bottom: 40px;
-            text-align: center;
+            text-align: center; 
+            border: 5px solid #ae00ff;
+            width: 300px;
+            margin: 0 auto;
+            justify-content: center;
+            align-items: center; 
+            
+            
+                  
         }
 
         .board {
+            
             width: 450px; /* 3 boxes by 100px + margins */
             margin: 0 auto;
             display: flex;
@@ -31,7 +40,7 @@
             justify-content: center;
         }
 
-        .box {
+        .square {
             width: 100px;
             height: 100px;
             border: 2px solid #0000ff;
@@ -51,10 +60,12 @@
 
         .start-button {
             margin-top: 35px;
-            padding: 30px;
-            font-size: 30px;
+            margin-bottom: 30px;
+            padding: 10px 25px;
+            font-size: 25px;
             font-weight: bold;
             cursor: pointer;
+
         }
     </style>
 
@@ -64,27 +75,31 @@
 
     <h1>Tic Tac Toe Game On!</h1>
 
-    <div class="makeAPlay">Player X's Turn</div> 
-
-    <div class="board">
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box">X</div>
-        <div class="box">X</div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box">O</div>
-        <div class="box"></div>
-        <div class="box"></div>
+    <div class="makeAPlay">Player X's Turn  
     </div> 
-<br></br>
-<br>
-    <button id="start-button">START</button>
-</br>
-<br></br>
-    <br> 
-   <a href="https://en.wikipedia.org/wiki/Tic-tac-toe" target="_blank" >Wiki Tic-Tac-Toe</a>
-</br>
+    <br>
+    <br>
+    <div class="board">
+     <script>
+        const NUM_SQUARES = 9; 
+        for (i=0; i<NUM_SQUARES; i++) {
+            id = "sq"+i;
+            document.write( "<div class='square' id='" + id + "'></div>" );
+        }
+
+     </script>   
+    </div> 
+    <script>
+        document.getElementById("sq2").innerHTML="X";
+        document.getElementById("sq3").innerHTML="X";
+        document.getElementById("sq6").innerHTML="O";
+
+     </script>    
+    <button class="start-button">START</button>
+
+    <p> 
+    <a href="https://en.wikipedia.org/wiki/Tic-tac-toe" target="_blank" >Wiki Tic-Tac-Toe</a>
+    </p>
 
 </body> 
 </html> 
