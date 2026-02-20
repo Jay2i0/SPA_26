@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Farenheit to Celsius Conversion</title>
+</head>
+<body>
+<h2>Farenheit to Celsius Conversion</h2>
+<script>   
+    // Function to convert Fareinheit to Celsius
+    function fahr2cels(temp) {
+        let celsius = (temp - 32) * 5/9
+        return celsius.toFixed(2); 
+    }
+        
+    // To call the function with different values
+    document.write("32°F = " + fahr2cels(32) + "°C<br>");
+    document.write("65°F = " + fahr2cels(65) + "°C<br>"); 
+    document.write("90°F = " + fahr2cels(90) + "°C<br>"); 
+    document.write("200°F = " + fahr2cels(200) + "°C<br>");
+
+</script>     
+</body>
+</html>
