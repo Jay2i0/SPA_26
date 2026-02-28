@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tic Tac Toe </title>
+
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 40px;
+            margin-top: 30px;
+        }
+
+        .makeAPlay {
+            font-size: 35px;
+            font-weight: bolder;
+            color: #0000ff;
+            margin-bottom: 40px;
+            text-align: center; 
+            border: 5px solid #ae00ff;
+            width: 300px;
+            margin: 0 auto;
+            justify-content: center;
+            align-items: center; 
+            
+            
+                  
+        }
+
+        .board {
+            
+            width: 450px; /* 3 boxes by 100px + margins */
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .square {
+            width: 100px;
+            height: 100px;
+            border: 2px solid #0000ff;
+            margin: 5px;
+            display: flex; 
+            justify-content: center;
+            align-items: center;
+            font-size: 48px;
+            color: #0000ff;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .box:hover {
+            background-color: #9c9aee;
+        } 
+
+        .start-button {
+            margin-top: 35px;
+            margin-bottom: 30px;
+            padding: 10px 25px;
+            font-size: 25px;
+            font-weight: bold;
+            cursor: pointer;
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1>Tic Tac Toe Game On!</h1>
+
+    <div class="makeAPlay">Player X's Turn  
+    </div> 
+    <br>
+    <div class="board">
+     <script>
+        const NUM_SQUARES = 9; 
+        for (i=0; i<NUM_SQUARES; i++) {
+            id = "sq"+i;
+            document.write( "<div class='square' id='" + id + "'></div>" ); 
+            
+        }
+
+     </script>   
+    </div> 
+    <script>
+        mySquares=document.querySelectorAll(".square")
+        console.log(mySquares) 
+        //console.log("test01") 
+       		
+        mySquares.forEach(function(square) {
+			square.addEventListener("click", function() {
+                this.innerHTML="X"
+				alert("You clicked a square: " +this.id)
+            })})
+        
+
+     </script>    
+    <button class="start-button">START</button>
+
+    <p> 
+    <a href="https://en.wikipedia.org/wiki/Tic-tac-toe" target="_blank" >Wiki Tic-Tac-Toe</a>
+    </p>
+
+</body> 
+</html> 
