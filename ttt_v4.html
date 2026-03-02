@@ -26,8 +26,7 @@
             margin: 0 auto;
             justify-content: center;
             align-items: center; 
-            
-            
+                        
                   
         }
 
@@ -54,9 +53,7 @@
             transition: background-color 0.2s ease;
         }
 
-        .box:hover {
-            background-color: #9c9aee;
-        } 
+        
 
         .start-button {
             margin-top: 35px;
@@ -89,40 +86,47 @@
      </script>   
     </div> 
     <script>
-        mySquares=document.querySelectorAll(".square")
-        console.log(mySquares) 
-
+       
         // Randomly choose whoseTurn to start      	
-        whoseTurn = Math.random() < 0.5 ? "X" : "0"; 
+        let whoseTurn = Math.random() < 0.5 ? "X" : "O"; 
 
         // Display whoseTurn to start playing
         document.querySelector(".makeAPlay").innerHTML = "Player " + whoseTurn + "'s Turn";
 
-        // Event handler is added to all squares
+        // Event handler is added to all squares 
+
+         mySquares=document.querySelectorAll(".square");
+        console.log(mySquares) 
+
         mySquares.forEach(function(square) {
 			square.addEventListener("click", function() {
 
-                //Put "X" or "O" in the squares
-                this.innerHTML = whoseTurn 
-
+                
                 // Do Not allow overwriting a square once an X or O is placed
-                if (this.innerHTML !== "") {
-                    return; 
-                }
-                // Alternate whoseTurn between X's or O's turn 
-                if (whoseTurn !== "X") 
+                if (this.innerHTML !== "") return; // do nothing if already marked
+                
+                this.innerHTML = whoseTurn; // Place "X" or "O" in the squares if empty
+                this.style.backgroundColor = "#c4c2f6"; 
+
+                whoseTurn = (whoseTurn === "X") ? "O" : "X";  // Alternate whoseTurn between X's or O's turn 
+                                
+                if (whoseTurn !== "X")    
                     whoseTurn = "O";
                 else 
-                    whoseTurn = "X"; 
+                  whoseTurn = "X";  
 
-                // update the display
-                document.querySelector(".makeAPlay").innerHTML = "Player " + whoseTurn + "'s Turn";               
+                 // update the display
+                document.querySelector(".makeAPlay").innerHTML = "Player " + whoseTurn + "'s Turn";           
+  
+
+   
                  
             }); 
                 
         });
          
      </script>    
+
     <button class="start-button">START</button>
 
     <p> 
