@@ -96,7 +96,9 @@
        		
         mySquares.forEach(function(square) {
 			square.addEventListener("click", function() {
-                this.innerHTML="X"
+                this.innerHTML="X" 
+				this.style.backgroundColor = "#c4c2f6"; 
+
 				alert("You clicked a square: " +this.id)
             })})
         
@@ -109,4 +111,5 @@
     </p>
 
 </body> 
+
 </html> 
