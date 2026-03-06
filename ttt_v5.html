@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tic Tac Toe</title>
+
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 40px;
+            margin-top: 30px;
+        }
+
+        .makeAPlay {
+            font-size: 35px;
+            font-weight: bolder;
+            color: #0000ff;
+            margin-bottom: 40px;
+            text-align: center;
+            border: 5px solid #ae00ff;
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        .board {
+            width: 450px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .square {
+            width: 100px;
+            height: 100px;
+            border: 2px solid #0000ff;
+            margin: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 48px;
+            color: #0000ff;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .start-button {
+            margin-top: 35px;
+            margin-bottom: 30px;
+            padding: 10px 25px;
+            font-size: 25px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Tic Tac Toe Game On!</h1>
+
+<div class="makeAPlay"></div>
+<br>
+
+
+<div class="board"> 
+
+<script>
+    const NUM_SQUARES = 9;
+    for (let i = 0; i < NUM_SQUARES; i++) {
+        let id = "sq" + i;
+        document.write("<div class='square' id='" + id + "'></div>");
+    }
+</script>
+</div>
+
+<button class="start-button">START GAME</button>
+
+<script>
+    let whoseTurn;
+    let gameActive = true;
+
+    const gameStatus = document.querySelector(".makeAPlay");
+    const squares = document.querySelectorAll(".square");
+
+    function startGame() {
+        squares.forEach(sq => {
+            sq.innerHTML = "";
+            sq.style.backgroundColor = "white";
+        });
+
+        gameActive = true;
+        whoseTurn = Math.random() < 0.5 ? "X" : "O";
+        gameStatus.innerHTML = "Player " + whoseTurn + "'s Turn";
+    }
+
+    startGame(); // initialize game 
+
+    squares.forEach(square => {
+        square.addEventListener("click", function () {
+
+            if (!gameActive) return;
+            if (this.innerHTML !== "") return;
+
+            this.innerHTML = whoseTurn;
+            this.style.backgroundColor = "#c4c2f6";
+
+            // Building a moves array using map()
+            const moves = Array.from(squares).map(sq =>
+                sq.innerHTML === "" ? "-" : sq.innerHTML
+            );
+
+            // Building win conditions of 8 strings
+            const winConditions = [
+                moves[0] + moves[1] + moves[2],
+                moves[3] + moves[4] + moves[5],
+                moves[6] + moves[7] + moves[8],
+                moves[0] + moves[3] + moves[6],
+                moves[1] + moves[4] + moves[7],
+                moves[2] + moves[5] + moves[8],
+                moves[0] + moves[4] + moves[8],
+                moves[2] + moves[4] + moves[6]
+            ];
+
+            // Check for a winner
+            if (winConditions.includes("XXX") || winConditions.includes("OOO")) {
+                gameStatus.innerHTML = "Player " + whoseTurn + " WINS!";
+                gameActive = false;
+                return;
+            }
+
+            // Check for stalemate
+            if (!moves.includes("-")) {
+                gameStatus.innerHTML = "Stalemate!";
+                gameActive = false;
+                return;
+            }
+
+            // Switch turns
+            whoseTurn = (whoseTurn === "X") ? "O" : "X";
+            gameStatus.innerHTML = "Player " + whoseTurn + "'s Turn";
+        });
+    });
+
+    // Start Game button
+    document.querySelector(".start-button").addEventListener("click", startGame);
+
+</script>
+
+
+
+<p>
+    <a href="https://en.wikipedia.org/wiki/Tic-tac-toe" target="_blank">Wiki Tic-Tac-Toe</a>
+</p>
+
+</body>
+</html>
+```
