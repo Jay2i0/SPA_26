@@ -19,7 +19,7 @@
 
 
     for (item in foodmenu) {
-        document.write(item + " $" + foodmenu[item] + ", " )
+        document.write(item + ":" + " $" + foodmenu[item] + ", " + "<br>")
         
     }
     
@@ -53,10 +53,10 @@
     sk = new Fooditem("sauerkraut",1)
 
 // The output should be Fooditem name and price
-    document.write("Item 1 " + hd.name + " $" + hd.price + " ");
-    document.write("Item 2 " + fr.name + " $" + fr.price + " ");
-    document.write("Item 3 " + sd.name + " $" + sd.price + " ");
-    document.write("Item 4 " + sk.name + " $" + sk.price + " ");
+    document.write("Item 1: " + hd.name + " $" + hd.price + ", ");
+    document.write("Item 2: " + fr.name + " $" + fr.price + ", ");
+    document.write("Item 3: " + sd.name + " $" + sd.price + ", ");
+    document.write("Item 4: " + sk.name + " $" + sk.price + ", ");
     
 
 
