@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joe's Menu</title>
+</head>
+<body>
+
+<h2>Joe's Menu</h2>
+
+<br>
+
+
+<select id="itemSelect"></select>
+
+
+<br><br><br>
+
+
+<button id="addBtn">Add to Cart</button>
+
+<br><br>
+
+
+<div id="ShoppingCart"></div>
+
+<br><br>
+
+<button id="checkoutBtn">Checkout</button>
+
+
+
+
+<script>
+
+// PART 4: MENU DATA STRUCTURE
+
+var menu = {
+    hotdog: 4,
+    fries: 3.50,
+    soda: 1.50,
+    sauerkraut: 1
+};
+
+// Build the <select> options dynamically
+var select = document.getElementById("itemSelect");
+
+for (let item in menu) {
+    let option = document.createElement("option");
+    option.value = item; // store the NAME, not the price
+    option.textContent = item + " - $" + menu[item].toFixed(2);
+    select.appendChild(option);
+}
+
+
+
+// PART 5: QUANTITY TRACKING FOR EACH ITEM
+
+var quantities = {
+    hotdog: 0,
+    fries: 0,
+    soda: 0,
+    sauerkraut: 0
+};
+
+
+zz
+// PART 5: ADD TO CART FUNCTIONALITY
+
+document.getElementById("addBtn").addEventListener("click", function () {
+
+    // Get selected item name
+    let selectedItem = select.value;
+
+    // Increase quantity by 1
+    quantities[selectedItem]++;
+
+    // Update cart display
+    updateCart();
+});
+
+
+
+// FUNCTION: UPDATE CART DISPLAY
+
+function updateCart() {
+    let cartDiv = document.getElementById("ShoppingCart");
+    cartDiv.innerHTML = ""; // clear previous display
+
+    for (let item in quantities) {
+        if (quantities[item] > 0) {
+            cartDiv.innerHTML += item + ": " + quantities[item] + "<br>";
+        }
+    }
+}
+
+
+
+// PART 6: CHECKOUT FUNCTIONALITY
+
+document.getElementById("checkoutBtn").addEventListener("click", function () {
+
+    let message = "Checkout Summary:\n\n";
+    let grandTotal = 0;
+
+    for (let item in quantities) {
+        if (quantities[item] > 0) {
+            let qty = quantities[item];
+            let cost = qty * menu[item];
+            grandTotal += cost;
+
+            message += item + ": " + qty + " × $" + menu[item].toFixed(2) +
+                       " = $" + cost.toFixed(2) + "\n";
+        }
+    }
+
+    message += "\nGrand Total: $" + grandTotal.toFixed(2);
+
+    alert(message);
+
+    // Reset quantities
+    for (let item in quantities) {
+        quantities[item] = 0;
+    }
+
+    // Clear cart display
+    updateCart();
+});
+
+</script>
+
+</body>
+</html>

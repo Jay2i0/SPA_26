@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<script>
+
+// Part 1
+   const foodmenu = [];
+    foodmenu["hotdog"] = 4
+    foodmenu["fries"] = 3.50
+    foodmenu["soda"] = 1.50
+    foodmenu["sauerkraut"] = 1
+    // document.write(foodmenu["hotdog"])
+
+
+    for (item in foodmenu) {
+        document.write(item + " $" + foodmenu[item] + ", " )
+        
+    }
+    
+ 
+    // Part 2
+
+    var menu = {
+        hotdog: 4,
+        fries: 3.50,
+        soda: 1.50,
+        sauerkraut: 1,
+
+    }
+
+    //document.write (menu['hotdog']) 
+
+    document.write(Object.keys(menu) + "<br>");
+
+
+ // Part 3
+
+    function Fooditem(name, price)
+    {
+        this.name = name;
+        this.price = price;
+    } 
+
+    hd = new Fooditem("hotdog",4);
+    fr = new Fooditem("fries",3.50);
+    sd = new Fooditem("soda",1.50);
+    sk = new Fooditem("sauerkraut",1)
+
+// The output should be Fooditem name and price
+    document.write("Item 1 " + hd.name + " $" + hd.price + " ");
+    document.write("Item 2 " + fr.name + " $" + fr.price + " ");
+    document.write("Item 3 " + sd.name + " $" + sd.price + " ");
+    document.write("Item 4 " + sk.name + " $" + sk.price + " ");
+    
+
+
+
+</script>
+
+</body>
+</html>
+
+
+
+
